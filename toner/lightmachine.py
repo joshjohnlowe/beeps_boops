@@ -14,12 +14,11 @@ async def send_shit(websocket, path):
         frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
 
         grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
         # Stream this guy somewhere
         average = grey.mean(axis=0).mean(axis=0)
         await websocket.send(str(average))
 
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(0.1)
 
 
         c = cv2.waitKey(1)
